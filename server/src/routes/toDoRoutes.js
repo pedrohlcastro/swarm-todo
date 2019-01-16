@@ -14,8 +14,8 @@ module.exports = (route) => {
             .catch(err => next({ err, message: 'Error running DB', status: 500 }));
     });
 
-    route.delete('/', (req, res, next) => {
-        const itemId = req.body.itemId;
+    route.delete('/:itemId', (req, res, next) => {
+        const itemId = req.params.itemId;
         toDoController.deleteItem(itemId)
             .then(() => res.json({status: true}))
             .catch(err => next({ err, message: 'Error running DB', status: 500 }));

@@ -2,6 +2,7 @@ version: '3.1'
 
 services:
   node-server:
+    container_name: backend
     build:
       context: ./server/
       args:
@@ -22,6 +23,7 @@ services:
       - mongo
 
   node-client:
+    container_name: frontend
     build:
       context: ./client/
       args:
@@ -35,6 +37,8 @@ services:
       - notused2:/opt/app/node_modules
     environment:
       - NODE_ENV=development
+    links:
+      - node-server
       
   mongo:
     image: mongo
