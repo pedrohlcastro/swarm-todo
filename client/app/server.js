@@ -21,11 +21,11 @@ app.use(helmet.xssFilter());
 app.disable('x-powered-by');
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../client/dist/client/')));
+app.use(express.static(path.join(__dirname, './client/')));
 
 // Call Angular
 app.all('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/client/index.html'));
+  res.sendFile(path.join(__dirname, './client/index.html'));
 });
 
 app.listen(PORT, () => {

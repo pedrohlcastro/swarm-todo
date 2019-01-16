@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   backend:
-    image: pedrohlcastro/swarm-toDo-backend
+    image: pedrohlcastro/swarm-todo-backend
     command: npm start
     ports:
       - "8000:8000"
@@ -19,7 +19,7 @@ services:
           - node.role == worker
 
   frontend:
-    image: pedrohlcastro/swarm-toDo-frontend
+    image: pedrohlcastro/swarm-todo-frontend
     command: npm start
     ports:
       - "80:4200"

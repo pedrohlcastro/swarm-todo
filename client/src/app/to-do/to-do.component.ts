@@ -8,7 +8,8 @@ import { ToDoService } from '../shared/to-do.service';
 })
 export class ToDoComponent implements OnInit {
 
-  todoItens: string[];
+  todoItens = [];
+  newItem = '';
 
   constructor(private todoService: ToDoService) { }
 
