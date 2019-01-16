@@ -19,8 +19,6 @@ services:
     restart: on-failure
     depends_on:
       - mongo
-    links:
-      - mongo
 
   node-client:
     container_name: frontend
@@ -37,8 +35,6 @@ services:
       - notused2:/opt/app/node_modules
     environment:
       - NODE_ENV=development
-    links:
-      - node-server
       
   mongo:
     image: mongo

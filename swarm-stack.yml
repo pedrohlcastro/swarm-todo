@@ -1,0 +1,49 @@
+version: '3.1'
+services:
+  backend:
+    image: pedrohlcastro/swarm-toDo-backend
+    command: npm start
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+    restart: on-failure
+    depends_on:
+      - db
+    networks:
+      - net-1
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+
+  frontend:
+    image: pedrohlcastro/swarm-toDo-frontend
+    command: npm start
+    ports:
+      - "80:4200"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - net-1
+      - net-2
+    deploy:
+      replicas: 5
+      placement:
+        constraints:
+          - node.role == worker
+      
+  db:
+    image: mongo
+    container_name: mongo
+    restart: always
+    deploy:
+      placement:
+        replicas: 1
+        constraints:
+          - node.role == worker
+    networks:
+      - net-2
+    volumes:
+      - ./database/:/data/db

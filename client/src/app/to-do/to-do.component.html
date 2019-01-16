@@ -1,7 +1,7 @@
 <mat-list *ngFor="let item of todoItens; let i = index">
   <mat-list-item> 
     <mat-card> 
-      {{ item }} <i class="material-icons" (click)="deleteItem(i)">delete</i> 
+      {{ item.message }} <i class="material-icons" (click)="deleteItem(i)">delete</i> 
     </mat-card>
   </mat-list-item>
 </mat-list>

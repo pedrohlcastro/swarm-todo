@@ -8,11 +8,11 @@ import { pipe } from 'rxjs';
 })
 export class ToDoService {
 
-  URL = 'http://backend:8000/api/all/';
+  URL = 'http://localhost:8000/api';
   constructor(private _http: Http) { }
 
   getData() {
-    return this._http.get(this.URL).pipe(map(res => res.json()));
+    return this._http.get(`${this.URL}/all`).pipe(map(res => res.json()));
   }
 
   deleteItem(id) {

@@ -13,23 +13,26 @@ export class ToDoComponent implements OnInit {
   constructor(private todoService: ToDoService) { }
 
   ngOnInit() {
-    this.todoService.getData()
-      .subscribe(res => this.todoItens = res);
+    this.getAllData();
   }
 
   getAllData() {
     this.todoService.getData()
-      .subscribe(res => this.todoItens = res);
+      .subscribe(res => {
+        this.todoItens = res;
+      });
   }
 
   deleteItem(id) {
-    this.todoService.deleteItem(id)
+    this.todoService.deleteItem(this.todoItens[id]._id)
       .subscribe(res => this.getAllData());
   }
 
   createItem(newItem) {
     this.todoService.createItem(newItem.toString())
-      .subscribe(res => this.getAllData());
+      .subscribe(res => {
+        this.getAllData();
+      });
   }
 
 }
