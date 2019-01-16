@@ -27,11 +27,7 @@ app.disable('x-powered-by');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-// Send Index.html page
-app.get('/', (req, res) => {
-    res.json({status: true})
-});
+app.use('/api', require('./routes/toDoRoutes')(new express.Router()));
 
 //Error handler
 app.use((err, req, res, next) => {
