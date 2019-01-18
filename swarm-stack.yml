@@ -47,3 +47,8 @@ services:
       - net-2
     volumes:
       - ./database/:/data/db
+networks:
+  net-1:
+    driver: bridge
+  net-2:
+    driver: bridge

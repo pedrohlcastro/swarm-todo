@@ -7,7 +7,7 @@ module.exports = (route) => {
             .catch(err => next({ err, message: 'Error running DB', status: 500 }));
     });
 
-    route.post('/', (req, res, next) => {
+    route.post('/create', (req, res, next) => {
         const message = req.body.message;
         toDoController.createItem(message)
             .then(() => res.json({status: true}))

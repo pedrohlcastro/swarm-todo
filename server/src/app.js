@@ -12,7 +12,7 @@ const app = express();
 
 require('./config/configDb')(mongoose);
 
-app.use(compress());
+// app.use(compress());
 app.use(morgan(ENV || 'dev'));
 app.use(cors());
 
